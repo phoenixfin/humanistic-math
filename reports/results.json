@@ -1,0 +1,126 @@
+{
+  "substrate": {
+    "n_theorems": 38928,
+    "n_landmarks_mm100": 72
+  },
+  "rq2_selector_mm100": {
+    "roc_auc": 0.8585439400178436,
+    "avg_precision": 0.05106261974078182,
+    "n_pos": 72,
+    "n": 38928
+  },
+  "rq1_ablation_mm100": {
+    "only_statement": {
+      "roc_auc": 0.6546366712991559,
+      "avg_precision": 0.011281024875365243,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "only_proof": {
+      "roc_auc": 0.8544987332143756,
+      "avg_precision": 0.010921525915612185,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "only_graph": {
+      "roc_auc": 0.6755198682314185,
+      "avg_precision": 0.009889300826553222,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "only_surprise": {
+      "roc_auc": 0.535506278166678,
+      "avg_precision": 0.0022602493939842556,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "only_cultural": {
+      "roc_auc": 0.8390494175073777,
+      "avg_precision": 0.021886678190264745,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "intrinsic_all": {
+      "roc_auc": 0.8585439400178436,
+      "avg_precision": 0.05106261974078182,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "all_features": {
+      "roc_auc": 0.9211043482488046,
+      "avg_precision": 0.1329564144097159,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "intrinsic_minus_statement": {
+      "roc_auc": 0.8290765189989249,
+      "avg_precision": 0.03806065801364532,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "intrinsic_minus_proof": {
+      "roc_auc": 0.7159494172214216,
+      "avg_precision": 0.03672484925986248,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "intrinsic_minus_graph": {
+      "roc_auc": 0.865764689566033,
+      "avg_precision": 0.06286167625238437,
+      "n_pos": 72,
+      "n": 38928
+    },
+    "intrinsic_minus_surprise": {
+      "roc_auc": 0.8386642703543569,
+      "avg_precision": 0.05196076921607202,
+      "n_pos": 72,
+      "n": 38928
+    }
+  },
+  "rq3_convergence": {
+    "pairwise": {
+      "centrality~compression": {
+        "spearman": 0.8080757086440996,
+        "kendall": 0.6388887863413406
+      },
+      "centrality~reuse": {
+        "spearman": 0.8850541998917395,
+        "kendall": 0.7517641399375723
+      },
+      "centrality~surprise": {
+        "spearman": -0.1415007416453809,
+        "kendall": -0.09687434450837222
+      },
+      "compression~reuse": {
+        "spearman": 0.9391186129571963,
+        "kendall": 0.8221576374159068
+      },
+      "compression~surprise": {
+        "spearman": -0.1332834411944291,
+        "kendall": -0.09178314632844123
+      },
+      "reuse~surprise": {
+        "spearman": -0.17610096193051863,
+        "kendall": -0.12688897145170203
+      }
+    },
+    "vs_landmarks": {
+      "centrality": {
+        "roc_auc": 0.2825718321780706,
+        "mean_landmark_percentile": 0.3045661680124906
+      },
+      "compression": {
+        "roc_auc": 0.3390646089264063,
+        "mean_landmark_percentile": 0.3422010715213377
+      },
+      "reuse": {
+        "roc_auc": 0.33249941378994813,
+        "mean_landmark_percentile": 0.32514564298416126
+      },
+      "surprise": {
+        "roc_auc": 0.4941572015189989,
+        "mean_landmark_percentile": 0.49416785835595406
+      }
+    }
+  }
+}
