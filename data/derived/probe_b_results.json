@@ -1,0 +1,124 @@
+{
+  "parse_seconds": 1.5,
+  "assertions": 50461,
+  "axioms_and_definitions": 2998,
+  "theorems": 47463,
+  "unique_dependency_edges": 1503399,
+  "duplicate_statements": 5165,
+  "mm100_flagged": 84,
+  "mm100_distinct_entries": 73,
+  "top_reused": [
+    [
+      "wcel",
+      35769
+    ],
+    [
+      "wceq",
+      28439
+    ],
+    [
+      "wa",
+      26935
+    ],
+    [
+      "cfv",
+      24713
+    ],
+    [
+      "co",
+      23677
+    ],
+    [
+      "cv",
+      23372
+    ],
+    [
+      "wbr",
+      15076
+    ],
+    [
+      "syl",
+      15043
+    ],
+    [
+      "wb",
+      13159
+    ],
+    [
+      "eqid",
+      11471
+    ],
+    [
+      "wi",
+      11451
+    ],
+    [
+      "wss",
+      11261
+    ],
+    [
+      "w3a",
+      10434
+    ],
+    [
+      "adantr",
+      10280
+    ],
+    [
+      "wral",
+      9625
+    ]
+  ],
+  "mm100_examples": [
+    {
+      "label": "sqrt2irrlem",
+      "n": 1,
+      "statement": "|- ( ph -> ( ( A / 2 ) e. ZZ /\\ ( B / 2 ) e. NN ) )"
+    },
+    {
+      "label": "fta",
+      "n": 2,
+      "statement": "|- ( ( F e. ( Poly ` S ) /\\ ( deg ` F ) e. NN ) -> E. z e. CC ( F ` z ) = 0 )"
+    },
+    {
+      "label": "qnnen",
+      "n": 3,
+      "statement": "|- QQ ~~ NN"
+    },
+    {
+      "label": "cphpyth",
+      "n": 4,
+      "statement": "|- ( ( ph /\\ ( A ., B ) = 0 ) -> ( ( N ` ( A .+ B ) ) ^ 2 ) = ( ( ( N ` A ) ^ 2 ) + ( ( N ` B ) ^ 2 "
+    },
+    {
+      "label": "pnt",
+      "n": 5,
+      "statement": "|- ( x e. ( 1 (,) +oo ) |-> ( ( ppi ` x ) / ( x / ( log ` x ) ) ) ) ~~>r 1"
+    },
+    {
+      "label": "lgsquad",
+      "n": 7,
+      "statement": "|- ( ( P e. ( Prime \\ { 2 } ) /\\ Q e. ( Prime \\ { 2 } ) /\\ P =/= Q ) -> ( ( P /L Q ) x. ( Q /L P ) )"
+    },
+    {
+      "label": "2sqr3nconstr",
+      "n": 8,
+      "statement": "|- ( 2 ^c ( 1 / 3 ) ) e/ Constr"
+    },
+    {
+      "label": "cos9thpinconstr",
+      "n": 8,
+      "statement": "|- ( O e. Constr /\\ Z e/ Constr )"
+    },
+    {
+      "label": "areacirc",
+      "n": 9,
+      "statement": "|- ( ( R e. RR /\\ 0 <_ R ) -> ( area ` S ) = ( _pi x. ( R ^ 2 ) ) )"
+    },
+    {
+      "label": "eulerth",
+      "n": 10,
+      "statement": "|- ( ( N e. NN /\\ A e. ZZ /\\ ( A gcd N ) = 1 ) -> ( ( A ^ ( phi ` N ) ) mod N ) = ( 1 mod N ) )"
+    }
+  ]
+}

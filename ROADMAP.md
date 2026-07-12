@@ -92,10 +92,18 @@ Map outcomes to the philosophical claim:
 
 ## Carried-Forward Open Items
 
-- **[OPEN] Derivation source** — Branch A vs. B (Phase 0 resolves).
-- **[OPEN] Significance scale** — 0–3 anchors/granularity.
-- **[OPEN] Label volume & labelers** — count; single vs. multi (inter-rater).
-- **[OPEN] Intrinsic measures shortlist** — final set + exact definitions.
+All resolved 2026-07-13 (details in [docs/PHASE0_DECISION.md](docs/PHASE0_DECISION.md)):
+
+- **[RESOLVED] Derivation source** — Branch B via Metamath `set.mm` (mathlib/
+  Isabelle need a heavy toolchain; set.mm gives the same theorem-set + exact
+  dependency DAG as one parseable file, plus in-file landmark flags).
+- **[RESOLVED] Significance scale** — 0–3, anchors in [docs/LABELING.md](docs/LABELING.md).
+- **[RESOLVED] Label volume & labelers** — 100 theorems, single labeler first;
+  second-labeler CSV workflow reserved for inter-rater agreement.
+- **[RESOLVED] Intrinsic measures shortlist** — reuse, PageRank centrality,
+  MDL-style compression, bigram surprise (`src/hmath/measures.py`).
+- **[OPEN] Human labels** — `data/labels/label_sample.csv` awaits grading;
+  experiments re-run automatically once `labels_filled.csv` exists.
 
 ---
 

@@ -1,0 +1,1756 @@
+{
+  "config": {
+    "max_term_size": 7,
+    "time_budget_s": 1200.0,
+    "max_rounds": 12
+  },
+  "n_terms_enumerated": 60460,
+  "n_candidates": 5197,
+  "rounds": 1,
+  "wall_seconds": 1244.3,
+  "n_proven": 136,
+  "named_targets": 17,
+  "named_reached": 4,
+  "named_detail": {
+    "add_zero_left": {
+      "as": "lemma_000",
+      "statement": "v0 = (0 + v0)",
+      "method": "induction on v0"
+    },
+    "one_mul": {
+      "as": "lemma_001",
+      "statement": "v0 = (S(0) * v0)",
+      "method": "induction on v0"
+    },
+    "succ_add": {
+      "as": "lemma_008",
+      "statement": "(S(v0) + v1) = S((v0 + v1))",
+      "method": "induction on v1"
+    },
+    "add_assoc": {
+      "as": "lemma_052",
+      "statement": "((v0 + v1) + v2) = (v0 + (v1 + v2))",
+      "method": "induction on v0"
+    }
+  },
+  "named_missed": [
+    "add_comm",
+    "distrib_left",
+    "distrib_right",
+    "mul_assoc",
+    "mul_comm",
+    "mul_one",
+    "mul_pow",
+    "one_pow",
+    "pow_add",
+    "pow_mul",
+    "pow_one",
+    "succ_mul",
+    "zero_mul"
+  ],
+  "proven": [
+    {
+      "name": "lemma_000",
+      "statement": "v0 = (0 + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero"
+      ]
+    },
+    {
+      "name": "lemma_001",
+      "statement": "v0 = (S(0) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_002",
+      "statement": "S(v0) = (S(0) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero"
+      ]
+    },
+    {
+      "name": "lemma_003",
+      "statement": "v0 = ((0 * v0) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_004",
+      "statement": "v0 = (S((0 ^ v0)) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_001",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_005",
+      "statement": "(0 ^ v0) = ((0 ^ v0) ^ v0)",
+      "method": "induction on v0",
+      "used": [
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_006",
+      "statement": "(0 ^ v0) = (0 ^ (v0 * v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_007",
+      "statement": "(0 ^ v0) = (0 ^ (v0 + v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_008",
+      "statement": "(S(v0) + v1) = S((v0 + v1))",
+      "method": "induction on v1",
+      "used": [
+        "add_succ",
+        "add_zero"
+      ]
+    },
+    {
+      "name": "lemma_009",
+      "statement": "(S(v0) + v1) = S((v1 + v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_002",
+        "lemma_008"
+      ]
+    },
+    {
+      "name": "lemma_010",
+      "statement": "(v0 + v0) = (S(S(0)) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_002",
+        "lemma_008",
+        "lemma_009",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_011",
+      "statement": "(v0 + v1) = ((0 + v1) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009"
+      ]
+    },
+    {
+      "name": "lemma_012",
+      "statement": "(v0 + v1) = (0 + (v1 + v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008"
+      ]
+    },
+    {
+      "name": "lemma_013",
+      "statement": "S(v0) = ((S(0) ^ v0) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_014",
+      "statement": "S(v0) = (S((0 * v0)) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_003",
+        "lemma_008"
+      ]
+    },
+    {
+      "name": "lemma_015",
+      "statement": "S(v0) = (S(v0) + (0 * v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_002",
+        "lemma_008",
+        "lemma_012",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_016",
+      "statement": "S(v0) = (v0 + (S(0) ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_017",
+      "statement": "S(v0) = S(((0 * v0) + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_018",
+      "statement": "S(v0) = S((v0 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_019",
+      "statement": "v0 = (((0 ^ v0) * v0) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "lemma_011",
+        "lemma_018",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_020",
+      "statement": "v0 = ((0 * (0 * v0)) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_012",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_021",
+      "statement": "v0 = ((0 * (0 + v0)) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_022",
+      "statement": "v0 = ((0 * (0 ^ v0)) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_008",
+        "lemma_009",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_023",
+      "statement": "v0 = ((0 * (v0 + v0)) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_012",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_024",
+      "statement": "v0 = ((0 * v0) + (0 + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_025",
+      "statement": "v0 = ((0 + (0 * v0)) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_026",
+      "statement": "v0 = ((0 + v0) + (0 * v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_018",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_027",
+      "statement": "v0 = ((0 ^ (0 ^ v0)) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_001",
+        "lemma_002",
+        "lemma_011",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_028",
+      "statement": "v0 = ((v0 * (0 ^ v0)) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_008",
+        "lemma_009",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_029",
+      "statement": "v0 = ((v0 ^ (0 ^ v0)) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_001",
+        "lemma_002",
+        "lemma_011",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_030",
+      "statement": "v0 = (0 + (v0 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_018",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_031",
+      "statement": "v0 = (v0 * (0 ^ (0 ^ v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_008",
+        "lemma_009",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_032",
+      "statement": "v0 = (v0 * (v0 ^ (0 ^ v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_008",
+        "lemma_009",
+        "lemma_031",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_033",
+      "statement": "v0 = (v0 + ((0 ^ v0) * v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_018",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_034",
+      "statement": "v0 = (v0 + (0 * (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_035",
+      "statement": "v0 = (v0 + (0 * (0 + v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_036",
+      "statement": "v0 = (v0 + (0 * (0 ^ v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_037",
+      "statement": "v0 = (v0 + (0 * (v0 + v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_038",
+      "statement": "v0 = (v0 + (0 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_018",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_039",
+      "statement": "v0 = (v0 + (v0 * (0 ^ v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_040",
+      "statement": "(0 ^ v0) = (0 ^ (S(v0) * v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_041",
+      "statement": "(0 ^ v0) = (S(v0) * (0 ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_001",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_042",
+      "statement": "S(v0) = ((0 ^ (0 * v0)) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_006",
+        "lemma_012",
+        "mul_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_043",
+      "statement": "S(v0) = (v0 + (0 ^ (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_006",
+        "lemma_008",
+        "mul_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_044",
+      "statement": "((v0 + v0) + v1) = ((v0 + v1) + v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_012"
+      ]
+    },
+    {
+      "name": "lemma_045",
+      "statement": "((v0 + v0) + v1) = ((v1 + v0) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_044"
+      ]
+    },
+    {
+      "name": "lemma_046",
+      "statement": "((v0 + v0) + v1) = (v0 + (v0 + v1))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_012",
+        "lemma_045"
+      ]
+    },
+    {
+      "name": "lemma_047",
+      "statement": "((v0 + v0) + v1) = (v0 + (v1 + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_046"
+      ]
+    },
+    {
+      "name": "lemma_048",
+      "statement": "((v0 + v1) + v1) = (v0 + (v1 + v1))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_011",
+        "lemma_012",
+        "lemma_045"
+      ]
+    },
+    {
+      "name": "lemma_049",
+      "statement": "((v0 + v1) + v2) = ((v0 + v2) + v1)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_012"
+      ]
+    },
+    {
+      "name": "lemma_050",
+      "statement": "((v0 + v1) + v2) = ((v1 + v2) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_049"
+      ]
+    },
+    {
+      "name": "lemma_051",
+      "statement": "((v0 + v1) + v2) = ((v2 + v1) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_050"
+      ]
+    },
+    {
+      "name": "lemma_052",
+      "statement": "((v0 + v1) + v2) = (v0 + (v1 + v2))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_011",
+        "lemma_012",
+        "lemma_051"
+      ]
+    },
+    {
+      "name": "lemma_053",
+      "statement": "((v0 + v1) + v2) = (v0 + (v2 + v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_052"
+      ]
+    },
+    {
+      "name": "lemma_054",
+      "statement": "((v0 + v1) + v2) = (v1 + (v0 + v2))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_012",
+        "lemma_053"
+      ]
+    },
+    {
+      "name": "lemma_055",
+      "statement": "((v0 + v1) + v2) = (v1 + (v2 + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_054"
+      ]
+    },
+    {
+      "name": "lemma_056",
+      "statement": "(0 ^ (0 ^ v0)) = (v0 ^ (0 ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_057",
+      "statement": "(0 ^ v0) = ((0 * (0 ^ v0)) ^ v0)",
+      "method": "induction on v0",
+      "used": [
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_058",
+      "statement": "(0 ^ v0) = ((0 ^ v0) * (0 ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_001",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_059",
+      "statement": "(0 ^ v0) = ((0 ^ v0) ^ (v0 * v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_006",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_060",
+      "statement": "(0 ^ v0) = ((0 ^ v0) ^ (v0 + v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_007",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_061",
+      "statement": "(0 ^ v0) = ((v0 * (0 ^ v0)) ^ v0)",
+      "method": "induction on v0",
+      "used": [
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_062",
+      "statement": "(0 ^ v0) = ((v0 ^ v0) * (0 ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_011",
+        "lemma_052",
+        "lemma_058",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_063",
+      "statement": "(0 ^ v0) = (0 ^ ((v0 * v0) + v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_006",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_064",
+      "statement": "(0 ^ v0) = (0 ^ ((v0 + v0) * v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_046",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_065",
+      "statement": "(0 ^ v0) = (0 ^ ((v0 + v0) + v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_007",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_066",
+      "statement": "(0 ^ v0) = (0 ^ (0 ^ (0 ^ v0)))",
+      "method": "induction on v0",
+      "used": [
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_067",
+      "statement": "(0 ^ v0) = (0 ^ (S(S(v0)) * v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_068",
+      "statement": "(0 ^ v0) = (0 ^ (v0 * (v0 + v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_006",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_069",
+      "statement": "(0 ^ v0) = (0 ^ (v0 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_006",
+        "lemma_008",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_070",
+      "statement": "(0 ^ v0) = (0 ^ (v0 + (v0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_008",
+        "lemma_069",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_071",
+      "statement": "(0 ^ v0) = (0 ^ (v0 + (v0 + v0)))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_007",
+        "lemma_008",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_072",
+      "statement": "(v0 * v0) = (((0 ^ v0) + v0) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_073",
+      "statement": "(v0 * v0) = ((v0 * v0) + (0 * v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "lemma_000",
+        "lemma_003",
+        "lemma_008",
+        "lemma_012",
+        "lemma_055",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_074",
+      "statement": "(v0 * v0) = ((v0 + (0 * v0)) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_012",
+        "lemma_038",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_075",
+      "statement": "(v0 * v0) = ((v0 + (0 ^ v0)) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_076",
+      "statement": "(v0 * v0) = (v0 * ((0 ^ v0) + v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_077",
+      "statement": "(v0 * v0) = (v0 * (v0 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_078",
+      "statement": "(v0 * v0) = (v0 * (v0 + (0 ^ v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_079",
+      "statement": "(v0 * v1) = (((0 ^ v1) + v0) * v1)",
+      "method": "induction on v1",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_080",
+      "statement": "(v0 * v1) = ((0 * v1) + (v0 * v1))",
+      "method": "induction on v1",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_052",
+        "lemma_055",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_081",
+      "statement": "(v0 * v1) = ((v0 + (0 * v0)) * v1)",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_082",
+      "statement": "(v0 * v1) = ((v0 + (0 * v1)) * v1)",
+      "method": "induction on v1",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_011",
+        "lemma_052",
+        "lemma_053",
+        "lemma_080",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_083",
+      "statement": "(v0 * v1) = ((v0 + (0 ^ v1)) * v1)",
+      "method": "induction on v1",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_084",
+      "statement": "(v0 * v1) = (v0 * ((0 ^ v0) + v1))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_085",
+      "statement": "(v0 * v1) = (v0 * (v1 + (0 * v1)))",
+      "method": "induction on v1",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_086",
+      "statement": "(v0 * v1) = (v0 * (v1 + (0 ^ v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_087",
+      "statement": "(v0 + v0) = (((0 * v0) + v0) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_088",
+      "statement": "(v0 + v0) = ((0 * v0) + (v0 + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_011",
+        "lemma_038",
+        "lemma_046",
+        "lemma_054"
+      ]
+    },
+    {
+      "name": "lemma_089",
+      "statement": "(v0 + v0) = ((v0 + (0 * v0)) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_054",
+        "lemma_088"
+      ]
+    },
+    {
+      "name": "lemma_090",
+      "statement": "(v0 + v0) = ((v0 + v0) + (0 * v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_008",
+        "lemma_026",
+        "lemma_038",
+        "lemma_046",
+        "lemma_052",
+        "lemma_053",
+        "mul_succ"
+      ]
+    },
+    {
+      "name": "lemma_091",
+      "statement": "(v0 + v0) = (S((S(0) ^ v0)) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_002",
+        "lemma_008",
+        "lemma_009",
+        "lemma_016",
+        "lemma_046",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_092",
+      "statement": "(v0 + v0) = (S(S((0 * v0))) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_002",
+        "lemma_008",
+        "lemma_009",
+        "lemma_052",
+        "lemma_080",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_093",
+      "statement": "(v0 + v0) = (S(S((0 ^ v0))) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "lemma_010",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    },
+    {
+      "name": "lemma_094",
+      "statement": "(v0 + v0) = (v0 + ((0 * v0) + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_095",
+      "statement": "(v0 + v0) = (v0 + (v0 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_096",
+      "statement": "(v0 + v1) = (((0 * v0) + v0) + v1)",
+      "method": "rewrite",
+      "used": [
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_097",
+      "statement": "(v0 + v1) = (((0 * v0) + v1) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_030",
+        "lemma_054",
+        "lemma_055"
+      ]
+    },
+    {
+      "name": "lemma_098",
+      "statement": "(v0 + v1) = (((0 * v1) + v0) + v1)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_038",
+        "lemma_052",
+        "lemma_054",
+        "lemma_055"
+      ]
+    },
+    {
+      "name": "lemma_099",
+      "statement": "(v0 + v1) = (((0 * v1) + v1) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_038",
+        "lemma_052",
+        "lemma_054",
+        "lemma_055"
+      ]
+    },
+    {
+      "name": "lemma_100",
+      "statement": "(v0 + v1) = ((0 * v0) + (v0 + v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_011",
+        "lemma_012",
+        "lemma_038",
+        "lemma_054"
+      ]
+    },
+    {
+      "name": "lemma_101",
+      "statement": "(v0 + v1) = ((0 * v0) + (v1 + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_100"
+      ]
+    },
+    {
+      "name": "lemma_102",
+      "statement": "(v0 + v1) = ((0 * v1) + (v0 + v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_101"
+      ]
+    },
+    {
+      "name": "lemma_103",
+      "statement": "(v0 + v1) = ((0 * v1) + (v1 + v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_102"
+      ]
+    },
+    {
+      "name": "lemma_104",
+      "statement": "(v0 + v1) = ((v0 + (0 * v0)) + v1)",
+      "method": "rewrite",
+      "used": [
+        "lemma_055",
+        "lemma_101"
+      ]
+    },
+    {
+      "name": "lemma_105",
+      "statement": "(v0 + v1) = ((v0 + (0 * v1)) + v1)",
+      "method": "rewrite",
+      "used": [
+        "lemma_055",
+        "lemma_103"
+      ]
+    },
+    {
+      "name": "lemma_106",
+      "statement": "(v0 + v1) = ((v0 + v1) + (0 * v0))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_012",
+        "lemma_015",
+        "lemma_052",
+        "lemma_103",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_107",
+      "statement": "(v0 + v1) = ((v0 + v1) + (0 * v1))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_026",
+        "lemma_038",
+        "lemma_054"
+      ]
+    },
+    {
+      "name": "lemma_108",
+      "statement": "(v0 + v1) = ((v1 + (0 * v0)) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_105"
+      ]
+    },
+    {
+      "name": "lemma_109",
+      "statement": "(v0 + v1) = ((v1 + (0 * v1)) + v0)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_104"
+      ]
+    },
+    {
+      "name": "lemma_110",
+      "statement": "(v0 + v1) = ((v1 + v0) + (0 * v0))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_106"
+      ]
+    },
+    {
+      "name": "lemma_111",
+      "statement": "(v0 + v1) = ((v1 + v0) + (0 * v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_012",
+        "lemma_107"
+      ]
+    },
+    {
+      "name": "lemma_112",
+      "statement": "(v0 + v1) = (v0 + ((0 * v0) + v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_055",
+        "lemma_110"
+      ]
+    },
+    {
+      "name": "lemma_113",
+      "statement": "(v0 + v1) = (v0 + ((0 * v1) + v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_003"
+      ]
+    },
+    {
+      "name": "lemma_114",
+      "statement": "(v0 + v1) = (v0 + (v1 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_053",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_115",
+      "statement": "(v0 + v1) = (v0 + (v1 + (0 * v1)))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_030"
+      ]
+    },
+    {
+      "name": "lemma_116",
+      "statement": "(v0 ^ v0) = (((0 ^ v0) + v0) ^ v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_009",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_117",
+      "statement": "(v0 ^ v0) = ((0 * v0) + (v0 ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_080",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_118",
+      "statement": "(v0 ^ v0) = ((v0 + (0 * v0)) ^ v0)",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "lemma_085",
+        "mul_succ",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_119",
+      "statement": "(v0 ^ v0) = ((v0 + (0 ^ v0)) ^ v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_120",
+      "statement": "(v0 ^ v0) = (v0 ^ (v0 + (0 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_011",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "lemma_069",
+        "mul_succ",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_121",
+      "statement": "(v0 ^ v1) = (((0 ^ v1) + v0) ^ v1)",
+      "method": "induction on v1",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_011",
+        "lemma_052",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_122",
+      "statement": "(v0 ^ v1) = ((v0 + (0 * v0)) ^ v1)",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_123",
+      "statement": "(v0 ^ v1) = ((v0 + (0 ^ v1)) ^ v1)",
+      "method": "induction on v1",
+      "used": [
+        "add_zero",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_124",
+      "statement": "(v0 ^ v1) = (v0 ^ (v1 + (0 * v1)))",
+      "method": "induction on v1",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_038",
+        "lemma_052",
+        "lemma_053",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_125",
+      "statement": "((v0 + v0) + v0) = (S(S(S(0))) * v0)",
+      "method": "induction on v0",
+      "used": [
+        "add_succ",
+        "add_zero",
+        "lemma_002",
+        "lemma_008",
+        "lemma_009",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_126",
+      "statement": "(S(v0) * v1) = (v1 + (0 + (v0 * v1)))",
+      "method": "induction on v1",
+      "used": [
+        "add_succ",
+        "lemma_000",
+        "lemma_008",
+        "lemma_012",
+        "lemma_054",
+        "lemma_055",
+        "lemma_104",
+        "lemma_109",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_127",
+      "statement": "(S(v0) * v1) = (v1 + (0 + (v1 * v0)))",
+      "method": "induction on v0",
+      "used": [
+        "add_zero",
+        "lemma_000",
+        "lemma_001",
+        "lemma_012",
+        "lemma_126",
+        "mul_succ",
+        "mul_zero"
+      ]
+    },
+    {
+      "name": "lemma_128",
+      "statement": "(S(v0) * v1) = (v1 + (v1 * (0 + v0)))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_127"
+      ]
+    },
+    {
+      "name": "lemma_129",
+      "statement": "S((0 ^ v0)) = (S(S(0)) ^ (0 ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_000",
+        "lemma_002",
+        "lemma_008",
+        "lemma_009",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_130",
+      "statement": "S((0 ^ v0)) = (S(S(v0)) ^ (0 ^ v0))",
+      "method": "induction on v0",
+      "used": [
+        "lemma_129",
+        "mul_zero",
+        "pow_succ",
+        "pow_zero"
+      ]
+    },
+    {
+      "name": "lemma_131",
+      "statement": "S((S(v0) * v1)) = (S((v1 * v0)) + v1)",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_009",
+        "lemma_128"
+      ]
+    },
+    {
+      "name": "lemma_132",
+      "statement": "S((S(v0) * v1)) = (S(v1) + (v0 * v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_008",
+        "lemma_126"
+      ]
+    },
+    {
+      "name": "lemma_133",
+      "statement": "S((S(v0) * v1)) = S(((v0 * v1) + v1))",
+      "method": "rewrite",
+      "used": [
+        "lemma_009",
+        "lemma_132"
+      ]
+    },
+    {
+      "name": "lemma_134",
+      "statement": "S((S(v0) * v1)) = S((v1 + (v0 * v1)))",
+      "method": "rewrite",
+      "used": [
+        "lemma_000",
+        "lemma_126"
+      ]
+    },
+    {
+      "name": "lemma_135",
+      "statement": "((0 ^ v0) * v1) = (((0 ^ v1) ^ v0) * v1)",
+      "method": "induction on v1",
+      "used": [
+        "lemma_000",
+        "lemma_011",
+        "lemma_052",
+        "mul_succ",
+        "mul_zero",
+        "pow_succ"
+      ]
+    }
+  ]
+}

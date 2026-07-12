@@ -37,6 +37,8 @@ NAMED = {
 
 def main() -> None:
     cfg = Config()
+    if len(sys.argv) > 1:                 # optional wall-clock budget override
+        cfg.time_budget_s = float(sys.argv[1])
     res = explore(cfg)
 
     named_index = {repr(canonical_eq(eq)): name for name, eq in NAMED.items()}

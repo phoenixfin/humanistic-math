@@ -3,3 +3,5 @@ __pycache__/
 .venv/
 data/raw/
 *.egg-info/
+data/derived/substrate.jsonl
+data/derived/measures.json
