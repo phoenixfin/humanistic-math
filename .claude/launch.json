@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "label-ui",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["scripts/label_ui.py", "8731"],
+      "port": 8731
+    }
+  ]
+}
