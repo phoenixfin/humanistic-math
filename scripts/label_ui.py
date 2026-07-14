@@ -9,8 +9,10 @@ resume). Keyboard: 0-3 grade, arrows navigate, n focuses notes.
 
 import csv
 import json
+import re
 import sys
 import threading
+import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
@@ -122,7 +124,7 @@ function show(){
   el('stmt').textContent=t.statement;
   el('desc').textContent=t.description;
   el('ext').href=t.url;
-  el('right').src=t.url;
+  el('right').src='/mm/'+t.label+'.html';
   el('notes').value=t.notes||'';
   for(let g=0;g<4;g++)
     el('g'+g).className=(t.significance_0_3===String(g))?'sel':'';
@@ -160,6 +162,36 @@ boot();
 </script></body></html>"""
 
 
+_MM_CACHE: dict[str, bytes] = {}
+
+
+def _metamath_page(name: str) -> bytes:
+    """Fetch a us.metamath.org theorem page for same-origin embedding.
+
+    The site sends anti-embedding headers, so the iframe loads it through us
+    instead; a <base> tag keeps its relative assets/links pointing home.
+    """
+    if not re.fullmatch(r"[A-Za-z0-9._-]+\.html", name):
+        return b"<p>bad page name</p>"
+    if name not in _MM_CACHE:
+        url = f"https://us.metamath.org/mpeuni/{name}"
+        try:
+            with urllib.request.urlopen(url, timeout=15) as resp:
+                html = resp.read()
+        except OSError:
+            return (f'<p style="font-family:sans-serif">could not fetch '
+                    f'<a href="{url}" target="_blank">{url}</a> — check your '
+                    f'connection, or use the external link.</p>').encode()
+        base = b'<base href="https://us.metamath.org/mpeuni/" target="_blank">'
+        m = re.search(rb"<head[^>]*>", html, re.IGNORECASE)
+        if m:
+            html = html[:m.end()] + base + html[m.end():]
+        else:
+            html = base + html
+        _MM_CACHE[name] = html
+    return _MM_CACHE[name]
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send(self, body: bytes, ctype: str) -> None:
         self.send_response(200)
@@ -173,6 +205,9 @@ class Handler(BaseHTTPRequestHandler):
             self._send(PAGE.encode(), "text/html; charset=utf-8")
         elif self.path == "/api/items":
             self._send(json.dumps(ITEMS).encode(), "application/json")
+        elif self.path.startswith("/mm/"):
+            self._send(_metamath_page(self.path[4:]),
+                       "text/html; charset=utf-8")
         else:
             self.send_error(404)
 
