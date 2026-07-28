@@ -1,0 +1,35 @@
+{
+  "substrate": {
+    "n_theorems": 1036,
+    "n_landmarks_mm100": 0
+  },
+  "rq3_convergence": {
+    "pairwise": {
+      "centrality~compression": {
+        "spearman": 0.9084873030399792,
+        "kendall": 0.7960803913374827
+      },
+      "centrality~reuse": {
+        "spearman": 0.983850157963076,
+        "kendall": 0.9234003921114297
+      },
+      "centrality~surprise": {
+        "spearman": -0.12236590204162025,
+        "kendall": -0.08829313312539513
+      },
+      "compression~reuse": {
+        "spearman": 0.9266935094518163,
+        "kendall": 0.8603161854767627
+      },
+      "compression~surprise": {
+        "spearman": -0.0837646121062859,
+        "kendall": -0.05905191199003819
+      },
+      "reuse~surprise": {
+        "spearman": -0.12379865843293184,
+        "kendall": -0.09274085669714814
+      }
+    }
+  },
+  "mm100_note": "only 0 Metamath-100 landmarks in this substrate \u2014 too few for the 5-fold CV selector/ablation; skipped. Rely on human labels instead."
+}

@@ -63,6 +63,13 @@ in:
    shown to models or labelers.
 3. Probe A's enumerator remains available to regenerate a small
    *authoring-free* substrate as a robustness check later.
+4. A second real (not self-enumerated) starter substrate is available:
+   `variant="prop"` filters `set.mm` down to its propositional-calculus
+   theorems only (no quantifiers/sets/classes) — 1,036 theorems, 20 axiom
+   roots, 2,976 dependency edges. Same real proofs and dependency edges as
+   the full library, just a smaller and simpler slice; useful for fast
+   pipeline iteration and quick manual labeling, though it carries **zero**
+   Metamath-100 landmark flags (see `docs/LABELING.md`).
 
 ## Roadmap open items resolved
 

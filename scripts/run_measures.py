@@ -8,12 +8,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from hmath import paths  # noqa: E402
 from hmath.measures import compute_all  # noqa: E402
 from hmath.substrate import Substrate  # noqa: E402
 
 
 def main() -> None:
-    s = Substrate.load(ROOT / "data" / "derived" / "substrate.jsonl")
+    variant = sys.argv[1] if len(sys.argv) > 1 else ""
+    s = Substrate.load(paths.substrate_path(variant))
     scores = {}
     for name in ("reuse", "centrality", "compression", "surprise"):
         from hmath.measures import ALL
@@ -21,7 +23,7 @@ def main() -> None:
         scores[name] = ALL[name](s)
         print(f"{name:12s} computed in {time.time() - t0:.1f}s")
 
-    out = ROOT / "data" / "derived" / "measures.json"
+    out = paths.measures_path(variant)
     out.write_text(json.dumps(scores), encoding="utf-8")
     print(f"wrote {out.relative_to(ROOT)}")
 

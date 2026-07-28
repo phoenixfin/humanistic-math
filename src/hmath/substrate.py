@@ -113,5 +113,44 @@ def build(db: Database) -> Substrate:
     return s
 
 
-def build_from_file(mm_path: str) -> Substrate:
-    return build(parse(mm_path))
+PROP_CONNECTIVES = {"-.", "->", "\\/", "/\\", "<->", "(", ")"}
+
+
+def _is_propositional(statement: str, db: Database) -> bool:
+    """True if a statement uses only propositional connectives and wff
+    variables — no quantifiers, no set/class variables, no membership."""
+    toks = statement.split()
+    if not toks or toks[0] != "|-":
+        return False
+    return all(t in PROP_CONNECTIVES or db.var_typecode.get(t) == "wff"
+               for t in toks[1:])
+
+
+def build_propositional(db: Database) -> Substrate:
+    """A smaller starter substrate: the propositional-calculus slice of the
+    same real library — real theorems, real proofs, real dependency edges,
+    just restricted to statements with no quantifiers/sets/classes."""
+    full = build(db)
+    all_t = sorted(full.axioms + full.theorems, key=lambda t: t.index)
+    kept = [t for t in all_t if _is_propositional(t.statement, db)]
+    keep_labels = {t.label for t in kept}
+
+    axioms, theorems = [], []
+    for i, t in enumerate(kept):
+        nt = Theorem(label=t.label, index=i, statement=t.statement,
+                     comment=t.comment, mm100=t.mm100,
+                     deps=tuple(d for d in t.deps if d in keep_labels),
+                     proof_size=t.proof_size, n_restatements=t.n_restatements,
+                     is_axiom=t.is_axiom)
+        (axioms if nt.is_axiom else theorems).append(nt)
+
+    s = Substrate(theorems=theorems, axioms=axioms, by_label={})
+    s.by_label = {t.label: t for t in s.axioms + s.theorems}
+    return s
+
+
+def build_from_file(mm_path: str, variant: str = "") -> Substrate:
+    db = parse(mm_path)
+    if variant == "prop":
+        return build_propositional(db)
+    return build(db)

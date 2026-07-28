@@ -1,10 +1,11 @@
 """Phase 1 — draw the stratified labeling sample (deterministic, seed=0).
 
-Strata (target 100):
-- 10 Metamath-100 landmarks (anchor the top of the scale)
-- 30 from the top centrality decile
-- 30 from the middle (25th-75th percentile)
-- 30 from the bottom quartile
+    py scripts/make_label_sample.py [variant]
+
+Target is min(100, |T|): if the substrate has 100 theorems or fewer (e.g.
+the "prop" starter variant), every theorem is included. Otherwise, strata:
+- up to 10 Metamath-100 landmarks (anchor the top of the scale)
+- the rest split evenly across top centrality decile / middle 25-75% / bottom quartile
 """
 
 import csv
@@ -17,34 +18,44 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from hmath import paths  # noqa: E402
 from hmath.substrate import Substrate  # noqa: E402
 
 
 def main() -> None:
-    s = Substrate.load(ROOT / "data" / "derived" / "substrate.jsonl")
-    scores = json.loads((ROOT / "data" / "derived" / "measures.json").read_text())
+    variant = sys.argv[1] if len(sys.argv) > 1 else ""
+    s = Substrate.load(paths.substrate_path(variant))
+    scores = json.loads(paths.measures_path(variant).read_text())
     cent = scores["centrality"]
 
     rng = random.Random(0)
     ranked = sorted(s.theorems, key=lambda t: cent[t.label], reverse=True)
     n = len(ranked)
     landmarks = [t for t in s.theorems if t.mm100 is not None]
+    target = min(100, n)
 
-    picked = rng.sample(landmarks, 10)
-    chosen = {t.label for t in picked}
+    if n <= target:
+        picked = list(s.theorems)
+    else:
+        picked = rng.sample(landmarks, min(10, len(landmarks)))
+        chosen = {t.label for t in picked}
+        rest = target - len(picked)
+        thirds = [rest // 3] * 3
+        thirds[0] += rest - sum(thirds)
 
-    def draw(pool, k):
-        pool = [t for t in pool if t.label not in chosen]
-        got = rng.sample(pool, k)
-        chosen.update(t.label for t in got)
-        return got
+        def draw(pool, k):
+            pool = [t for t in pool if t.label not in chosen]
+            k = min(k, len(pool))
+            got = rng.sample(pool, k) if k else []
+            chosen.update(t.label for t in got)
+            return got
 
-    picked += draw(ranked[: n // 10], 30)
-    picked += draw(ranked[n // 4: 3 * n // 4], 30)
-    picked += draw(ranked[3 * n // 4:], 30)
+        picked += draw(ranked[: max(n // 10, 1)], thirds[0])
+        picked += draw(ranked[n // 4: 3 * n // 4], thirds[1])
+        picked += draw(ranked[3 * n // 4:], thirds[2])
     rng.shuffle(picked)
 
-    out = ROOT / "data" / "labels" / "label_sample.csv"
+    out = paths.label_sample_path(variant)
     out.parent.mkdir(parents=True, exist_ok=True)
     with open(out, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)

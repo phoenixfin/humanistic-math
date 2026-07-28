@@ -1,10 +1,13 @@
 """Interactive labeling UI (Phase 1) — stdlib only.
 
-Serves data/labels/label_sample.csv one theorem at a time; every grade is
-written immediately to data/labels/labels_filled.csv (safe to stop and
-resume). Keyboard: 0-3 grade, arrows navigate, n focuses notes.
+Serves the labeling sample one theorem at a time; every grade is written
+immediately to the matching labels_filled csv (safe to stop and resume).
+Keyboard: 0-3 grade, arrows navigate, n focuses notes.
 
-    py scripts/label_ui.py [port]
+    py scripts/label_ui.py [port] [variant]
+
+variant "" (default) = the full-library sample; "prop" = the
+propositional-calculus starter sample.
 """
 
 import csv
@@ -17,8 +20,13 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SAMPLE = ROOT / "data" / "labels" / "label_sample.csv"
-FILLED = ROOT / "data" / "labels" / "labels_filled.csv"
+sys.path.insert(0, str(ROOT / "src"))
+
+from hmath import paths  # noqa: E402
+
+VARIANT = sys.argv[2] if len(sys.argv) > 2 else ""
+SAMPLE = paths.label_sample_path(VARIANT)
+FILLED = paths.labels_filled_path(VARIANT)
 FIELDS = ["label", "statement", "description", "url",
           "significance_0_3", "notes"]
 
@@ -77,8 +85,10 @@ PAGE = """<!doctype html><html><head><meta charset="utf-8">
  #done{color:#0a7;font-weight:600;display:none;margin-top:.8rem}
  .lbl{font-weight:700;font-size:1.15rem}
  a{color:#06c}
+ #vbadge{color:#888;font-size:.8rem}
 </style></head><body>
 <div id="left">
+ <div id="vbadge"></div>
  <div id="bar"><div id="fill"></div></div>
  <div><span class="lbl" id="mmlabel"></span>
       <span id="pos" style="color:#888;float:right"></span></div>
@@ -104,15 +114,16 @@ PAGE = """<!doctype html><html><head><meta charset="utf-8">
  </nav>
  <p class="hint">keys: 0-3 grade &amp; advance · &#8592;/&#8594; navigate ·
     n notes</p>
- <p id="done">All 100 labeled &#10003; — run
-    <code>py scripts/run_experiments.py</code></p>
+ <p id="done"></p>
 </div>
 <iframe id="right"></iframe>
 <script>
-let items=[],i=0;
+let items=[],i=0,variant='';
 function el(id){return document.getElementById(id)}
 async function boot(){
-  items=await (await fetch('/api/items')).json();
+  const data=await (await fetch('/api/items')).json();
+  items=data.items; variant=data.variant;
+  el('vbadge').textContent=variant?('variant: '+variant):'';
   i=items.findIndex(t=>t.significance_0_3==='');
   if(i<0)i=0;
   show();
@@ -130,7 +141,10 @@ function show(){
     el('g'+g).className=(t.significance_0_3===String(g))?'sel':'';
   const n=items.filter(t=>t.significance_0_3!=='').length;
   el('fill').style.width=(100*n/items.length)+'%';
-  el('done').style.display=(n===items.length)?'block':'none';
+  const done=n===items.length;
+  el('done').style.display=done?'block':'none';
+  if(done) el('done').innerHTML='All '+items.length+' labeled &#10003; — run '+
+    '<code>py scripts/run_experiments.py'+(variant?(' '+variant):'')+'</code>';
 }
 async function put(){
   const t=items[i];
@@ -204,7 +218,8 @@ class Handler(BaseHTTPRequestHandler):
         if self.path == "/":
             self._send(PAGE.encode(), "text/html; charset=utf-8")
         elif self.path == "/api/items":
-            self._send(json.dumps(ITEMS).encode(), "application/json")
+            self._send(json.dumps({"items": ITEMS, "variant": VARIANT}).encode(),
+                       "application/json")
         elif self.path.startswith("/mm/"):
             self._send(_metamath_page(self.path[4:]),
                        "text/html; charset=utf-8")
@@ -230,7 +245,8 @@ class Handler(BaseHTTPRequestHandler):
 
 def main() -> None:
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8731
-    print(f"labeling UI on http://127.0.0.1:{port}  (Ctrl+C to stop)")
+    tag = f" (variant: {VARIANT})" if VARIANT else ""
+    print(f"labeling UI on http://127.0.0.1:{port}{tag}  (Ctrl+C to stop)")
     ThreadingHTTPServer(("127.0.0.1", port), Handler).serve_forever()
 
 

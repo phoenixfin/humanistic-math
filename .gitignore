@@ -5,3 +5,5 @@ data/raw/
 *.egg-info/
 data/derived/substrate.jsonl
 data/derived/measures.json
+data/derived/substrate_prop.jsonl
+data/derived/measures_prop.json

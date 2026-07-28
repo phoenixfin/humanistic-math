@@ -62,10 +62,21 @@ Phases 0–4 executed end-to-end (2026-07-13) against an interim landmark signal
   celebrate), while human landmarks are summit theorems that intrinsic
   proof-shape features still predict at AUC ~0.86 (`reports/READOUT.md`).
 
-**Next human step:** grade `data/labels/label_sample.csv` per
-[docs/LABELING.md](docs/LABELING.md), save as `labels_filled.csv`, re-run
-`py scripts/run_experiments.py`.
+**Next human step:** grade the sample interactively — run
+`py scripts/label_ui.py` and open http://127.0.0.1:8731 — or by hand per
+[docs/LABELING.md](docs/LABELING.md); either way it writes
+`data/labels/labels_filled.csv`, then re-run `py scripts/run_experiments.py`.
+
+A smaller **starter track** is also available for fast iteration and
+labeling practice: pass `prop` to any script to work against just the
+propositional-calculus slice of `set.mm` (1,036 real theorems, no
+quantifiers/sets/classes) instead of the full 38,928 — e.g.
+`py scripts/label_ui.py 8732 prop`. See
+[docs/PHASE0_DECISION.md](docs/PHASE0_DECISION.md) for how it's carved out
+and [docs/LABELING.md](docs/LABELING.md) for the two-track workflow.
 
 To reproduce from scratch: download `set.mm` to `data/raw/`, then run
-`scripts/build_substrate.py`, `scripts/run_measures.py`,
-`scripts/run_experiments.py` (Python ≥ 3.12, `pip install -r requirements.txt`).
+`scripts/build_substrate.py [variant]`, `scripts/run_measures.py [variant]`,
+`scripts/run_experiments.py [variant]` (Python ≥ 3.12,
+`pip install -r requirements.txt`), where `variant` is empty for the full
+library or `prop` for the starter slice.

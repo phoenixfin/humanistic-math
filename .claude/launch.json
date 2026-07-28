@@ -6,6 +6,12 @@
       "runtimeExecutable": "py",
       "runtimeArgs": ["scripts/label_ui.py", "8731"],
       "port": 8731
+    },
+    {
+      "name": "label-ui-prop",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["scripts/label_ui.py", "8732", "prop"],
+      "port": 8732
     }
   ]
 }

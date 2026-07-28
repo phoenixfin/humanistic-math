@@ -65,7 +65,8 @@ def rq1_ablation(X: np.ndarray, y: np.ndarray,
 
 
 def rq3_convergence(measures: dict[str, dict[str, float]],
-                    labels: list[str], y_landmark: np.ndarray) -> dict:
+                    labels: list[str],
+                    y_landmark: np.ndarray | None = None) -> dict:
     names = sorted(measures)
     vecs = {m: np.array([measures[m][t] for t in labels]) for m in names}
     pairwise = {}
@@ -75,14 +76,20 @@ def rq3_convergence(measures: dict[str, dict[str, float]],
             tau = kendalltau(vecs[a], vecs[b]).statistic
             pairwise[f"{a}~{b}"] = {"spearman": float(rho),
                                     "kendall": float(tau)}
-    vs_landmarks = {}
-    for m in names:
-        ranks = vecs[m].argsort().argsort() / (len(labels) - 1)
-        vs_landmarks[m] = {
-            "roc_auc": float(roc_auc_score(y_landmark, vecs[m])),
-            "mean_landmark_percentile": float(ranks[y_landmark == 1].mean()),
-        }
-    return {"pairwise": pairwise, "vs_landmarks": vs_landmarks}
+    out = {"pairwise": pairwise}
+    # roc_auc_score needs both classes present; too few/no landmarks in a
+    # small substrate (e.g. the propositional slice) means skip this part.
+    if y_landmark is not None and 0 < y_landmark.sum() < len(labels):
+        vs_landmarks = {}
+        for m in names:
+            ranks = vecs[m].argsort().argsort() / (len(labels) - 1)
+            vs_landmarks[m] = {
+                "roc_auc": float(roc_auc_score(y_landmark, vecs[m])),
+                "mean_landmark_percentile": float(
+                    ranks[y_landmark == 1].mean()),
+            }
+        out["vs_landmarks"] = vs_landmarks
+    return out
 
 
 def human_label_experiments(X: np.ndarray, feature_names: list[str],

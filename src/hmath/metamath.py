@@ -37,6 +37,7 @@ class Assertion:
 class Database:
     assertions: list[Assertion]
     variables: set[str]           # all $v tokens (for alpha-canonicalization)
+    var_typecode: dict[str, str]  # variable -> its $f-declared typecode (e.g. "wff", "set")
 
     def canonical(self, a: Assertion) -> tuple[str, ...]:
         """Statement tokens with variables renamed by order of first occurrence."""
@@ -62,6 +63,7 @@ def parse(path: str) -> Database:
     """Parse a .mm file into its assertions (database order) and variable set."""
     assertions: list[Assertion] = []
     variables: set[str] = set()
+    var_typecode: dict[str, str] = {}
     labels_seen: set[str] = set()          # labels of $a/$p (to filter proof deps)
     comment: list[str] = []                # tokens of the most recent comment
     in_comment = False
@@ -124,12 +126,22 @@ def parse(path: str) -> Database:
         # $c/$v/$f/$e/$d statements and block braces: skip their bodies but
         # remember the last plain token so assertion labels are available.
         if tok in ("$c", "$v", "$f", "$e", "$d"):
-            collect = tok == "$v"
-            for t in it:
-                if t == "$.":
-                    break
-                if collect:
+            if tok == "$v":
+                for t in it:
+                    if t == "$.":
+                        break
                     variables.add(t)
+            elif tok == "$f":
+                typecode = next(it)
+                varname = next(it)
+                var_typecode[varname] = typecode
+                for t in it:
+                    if t == "$.":
+                        break
+            else:
+                for t in it:
+                    if t == "$.":
+                        break
             prev = ""
             continue
         if tok in ("${", "$}"):
@@ -137,4 +149,5 @@ def parse(path: str) -> Database:
             continue
         prev = tok
 
-    return Database(assertions=assertions, variables=variables)
+    return Database(assertions=assertions, variables=variables,
+                    var_typecode=var_typecode)
