@@ -103,7 +103,8 @@ def human_label_experiments(X: np.ndarray, feature_names: list[str],
     Xh = X[idx]
     yh = np.array([human[labels[i]] for i in idx], dtype=float)
     out: dict = {"n_labeled": len(idx),
-                 "grade_counts": {g: int((yh == g).sum()) for g in sorted(set(yh))}}
+                 "grade_counts": {int(g): int((yh == g).sum())
+                                  for g in sorted(set(yh))}}
 
     def loo_spearman(cols: list[int]) -> float:
         # leave-one-out over the small labeled sample

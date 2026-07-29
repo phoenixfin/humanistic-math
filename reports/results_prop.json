@@ -31,5 +31,40 @@
       }
     }
   },
-  "mm100_note": "only 0 Metamath-100 landmarks in this substrate \u2014 too few for the 5-fold CV selector/ablation; skipped. Rely on human labels instead."
+  "mm100_note": "only 0 Metamath-100 landmarks in this substrate \u2014 too few for the 5-fold CV selector/ablation; skipped. Rely on human labels instead.",
+  "human_labels": {
+    "n_labeled": 100,
+    "grade_counts": {
+      "0": 51,
+      "1": 28,
+      "2": 19,
+      "3": 2
+    },
+    "rq2_intrinsic_spearman": 0.5103049212034377,
+    "rq1_ablation_spearman": {
+      "only_statement": 0.43019996172514785,
+      "only_proof": 0.06258993566674459,
+      "only_graph": 0.3384102596960407,
+      "only_surprise": -0.15500915547452887,
+      "only_cultural": 0.45764457527647834
+    },
+    "rq3_measures_vs_human": {
+      "centrality": {
+        "spearman": 0.3711153541014854,
+        "kendall": 0.3129449434555679
+      },
+      "compression": {
+        "spearman": 0.384300567242766,
+        "kendall": 0.30971160895506206
+      },
+      "reuse": {
+        "spearman": 0.39758681299808024,
+        "kendall": 0.3328336971709021
+      },
+      "surprise": {
+        "spearman": -0.08381430780444621,
+        "kendall": -0.06330991592590733
+      }
+    }
+  }
 }
